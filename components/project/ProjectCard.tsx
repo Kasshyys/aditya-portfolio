@@ -3,7 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { Project } from "@/types";
 import { cn } from "@/lib/utils";
 import TechBadge from "@/components/ui/TechBadge";
@@ -15,12 +15,21 @@ interface ProjectCardProps {
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ project, index, reversed }) => {
+  const cardVariants: Variants = {
+    initial: { opacity: 0, y: 40 },
+    animate: { 
+      opacity: 1, 
+      y: 0,
+      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
+    },
+  };
+
   return (
     <motion.article
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial="initial"
+      whileInView="animate"
       viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+      variants={cardVariants}
       className={cn(
         "flex flex-col lg:flex-row items-stretch gap-8 lg:gap-16 group",
         reversed && "lg:flex-row-reverse"

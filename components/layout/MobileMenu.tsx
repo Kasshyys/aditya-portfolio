@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, Variants } from "framer-motion";
 import Link from "next/link";
 import { X } from "lucide-react";
 import { socialLinks } from "@/lib/data/social";
@@ -25,7 +25,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, navLinks }) =>
     };
   }, [isOpen]);
 
-  const menuVariants = {
+  const menuVariants: Variants = {
     closed: {
       x: "100%",
       transition: {
@@ -42,7 +42,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, navLinks }) =>
     },
   };
 
-  const linkVariants = {
+  const linkVariants: Variants = {
     closed: { opacity: 0, y: 20 },
     open: (i: number) => ({
       opacity: 1,

@@ -2,7 +2,7 @@
 
 import React, { useRef } from "react";
 import Image from "next/image";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, Variants } from "framer-motion";
 import { Project } from "@/types";
 import TechBadge from "@/components/ui/TechBadge";
 
@@ -16,6 +16,15 @@ const ProjectHero: React.FC<ProjectHeroProps> = ({ project }) => {
     target: containerRef,
     offset: ["start start", "end start"],
   });
+
+  const titleVariants: Variants = {
+    initial: { opacity: 0, y: 30 },
+    animate: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.4 }
+    }
+  };
 
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
   const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
@@ -52,9 +61,9 @@ const ProjectHero: React.FC<ProjectHeroProps> = ({ project }) => {
           </motion.div>
           
           <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.4 }}
+            initial="initial"
+            animate="animate"
+            variants={titleVariants}
             className="text-5xl md:text-8xl font-display font-black text-white uppercase drop-shadow-xl"
           >
             {project.title}

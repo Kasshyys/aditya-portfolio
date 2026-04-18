@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 interface AnimatedTextProps {
@@ -21,7 +21,7 @@ const AnimatedText: React.FC<AnimatedTextProps> = ({
 }) => {
   const words = text.split(" ");
 
-  const containerVariants = {
+  const containerVariants: Variants = {
     initial: {},
     animate: {
       transition: {
@@ -31,7 +31,7 @@ const AnimatedText: React.FC<AnimatedTextProps> = ({
     },
   };
 
-  const wordVariants = {
+  const wordVariants: Variants = {
     initial: {
       opacity: 0,
       y: 40,

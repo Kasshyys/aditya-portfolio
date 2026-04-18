@@ -38,7 +38,6 @@ export const sectionReveal: Variants = {
       ease: "easeOut",
     },
   },
-  viewport: { once: true, amount: 0.2 },
 };
 
 export const imageReveal: Variants = {
@@ -56,7 +55,6 @@ export const imageReveal: Variants = {
       ease: [0.16, 1, 0.3, 1],
     },
   },
-  viewport: { once: true },
 };
 
 export const projectCardHover: Variants = {
@@ -83,9 +81,11 @@ export const buttonHover: Variants = {
 
 export const pageTransition: Variants = {
   initial: { opacity: 0 },
-  animate: { opacity: 1 },
+  animate: { 
+    opacity: 1,
+    transition: { duration: 0.6, ease: "easeInOut" }
+  },
   exit: { opacity: 0 },
-  transition: { duration: 0.6, ease: "easeInOut" },
 };
 
 export const loaderExit: Variants = {
